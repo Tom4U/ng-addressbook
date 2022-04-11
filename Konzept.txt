@@ -1,0 +1,15 @@
+Programm zur Adressverwaltung
+
+Titel: Adressbuch
+Name: addressbook
+
+Features:
+	* Adressen auflisten
+	* Adresse Details anzeigen
+	* Adresse erstellen
+	* Adresse bearbeiten/löschen
+	
+Ansichten (Views):
+	* Liste
+	* Detailansicht
+	* Formular zum anlegen und bearbeiten
