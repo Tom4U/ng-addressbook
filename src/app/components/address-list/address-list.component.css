@@ -1,0 +1,14 @@
+.list > * {
+    line-height: 2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.list > *:nth-child(odd) {
+    background-color: rgb(94, 125, 94);
+}
+
+.list > *:hover {
+    background-color: rgba(94, 188, 94, 0.6);
+    border: 1px solid black;
+}
