@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Address } from 'src/app/entities/address';
+import { AddressesService } from 'src/app/services/addresses.service';
 
 @Component({
   selector: 'app-address-list',
@@ -7,11 +8,13 @@ import { Address } from 'src/app/entities/address';
   styleUrls: ['./address-list.component.css']
 })
 export class AddressListComponent implements OnInit {
-  @Input() addresses: Address[] = [];
+  addresses: Address[] = [];
 
   selectedAddress?: Address;
 
-  constructor() {}
+  constructor(addressesSvc: AddressesService) {
+    this.addresses = addressesSvc.getAddresses();
+  }
 
   ngOnInit(): void {
   }

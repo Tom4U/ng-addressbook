@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Address } from './entities/address';
 import { Person } from './entities/person';
+import { AddressesService } from './services/addresses.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,10 @@ import { Person } from './entities/person';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  addresses: Address[] = [];
-
-  constructor() {
-    this.addresses.push(this.createAddresses('+49123456789', 'Hans', 'Dampf'));
-    this.addresses.push(this.createAddresses('+49123456789', 'Fred', 'Feuerstein'));
-    this.addresses.push(this.createAddresses('+49123456789', 'Benjamin', 'Blümchen'));
+  constructor(addressesSvc: AddressesService) {
+    addressesSvc.addAddress(this.createAddresses('+49123456789', 'Hans', 'Dampf'));
+    addressesSvc.addAddress(this.createAddresses('+49123456789', 'Fred', 'Feuerstein'));
+    addressesSvc.addAddress(this.createAddresses('+49123456789', 'Benjamin', 'Blümchen'));
   }
 
   private createAddresses(phone: string, firstname: string, lastname: string): Address {
