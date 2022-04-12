@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Address } from 'src/app/entities/address';
 
 @Component({
@@ -9,8 +9,18 @@ import { Address } from 'src/app/entities/address';
 export class AddressListComponent implements OnInit {
   @Input() addresses: Address[] = [];
 
+  selectedAddress?: Address;
+
   constructor() {}
 
   ngOnInit(): void {
+  }
+
+  showDetails(address: Address): void {
+    this.selectedAddress = address;
+  }
+
+  closingDetails(): void {
+    this.selectedAddress = undefined;
   }
 }

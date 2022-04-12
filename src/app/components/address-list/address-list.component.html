@@ -1,5 +1,6 @@
-<ul class="list">
-    <li *ngFor="let address of addresses">
+<ul class="list" *ngIf="!selectedAddress">
+    <li *ngFor="let address of addresses" (click)="showDetails(address)">
         {{address.person.firstname}} {{address.person.lastname}}
     </li>
 </ul>
+<app-address-item *ngIf="selectedAddress" [address]="selectedAddress" (closing)="closingDetails()"></app-address-item>

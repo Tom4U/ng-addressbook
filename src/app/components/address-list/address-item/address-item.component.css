@@ -1,0 +1,29 @@
+.details {
+    border: 0.5px solid #999;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    padding: 25px;
+}
+
+.details .row {
+    display: table-row;
+}
+
+.details .row > * {
+    display: table-cell;
+    padding: 10px;
+}
+
+.details .row > *:first-child {
+    text-align: right;
+}
+
+.details .row > *:last-child {
+    padding-left: 25px;
+}
+
+.actions {
+    text-align: center;
+    padding: 25px;
+}
+

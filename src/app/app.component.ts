@@ -9,14 +9,14 @@ import { Person } from './entities/person';
 })
 export class AppComponent {
   addresses: Address[] = [];
-  
+
   constructor() {
     this.addresses.push(this.createAddresses('+49123456789', 'Hans', 'Dampf'));
     this.addresses.push(this.createAddresses('+49123456789', 'Fred', 'Feuerstein'));
     this.addresses.push(this.createAddresses('+49123456789', 'Benjamin', 'Blümchen'));
-   }
+  }
 
-   private createAddresses(phone: string, firstname: string, lastname: string): Address {
+  private createAddresses(phone: string, firstname: string, lastname: string): Address {
     const address = new Address();
 
     address.phone = phone;
@@ -27,7 +27,7 @@ export class AppComponent {
 
   private createPerson(firstname: string, lastname: string): Person {
     const person = new Person();
-    
+
     person.firstname = firstname;
     person.lastname = lastname;
 
