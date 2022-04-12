@@ -1,5 +1,5 @@
 <ul class="list">
-    <li>Fred Feuerstein</li>
-    <li>Donald Duck</li>
-    <li>Pippi Langstrumpf</li>
+    <li *ngFor="let address of addresses">
+        {{address.person.firstname}} {{address.person.lastname}}
+    </li>
 </ul>

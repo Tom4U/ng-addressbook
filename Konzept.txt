@@ -13,3 +13,11 @@ Ansichten (Views):
 	* Liste
 	* Detailansicht
 	* Formular zum anlegen und bearbeiten
+	
+Entitäten:
+	* Person
+		* Vorname
+		* Nachname
+	* Adresse
+		* Person
+		* Telefonnumer
