@@ -16,5 +16,5 @@
     </section>
 </ng-container>
 <ng-container *ngIf="showForm">
-    <app-address-form [address]="address" (closing)="toggleForm()"></app-address-form>
+    <app-address-form [address]="address" (closing)="toggleForm($event)"></app-address-form>
 </ng-container>

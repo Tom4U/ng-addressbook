@@ -1,16 +1,18 @@
-<form #addressForm="ngForm" (ngSubmit)="storeAddress(this.addressForm)">
-    <input type="hidden" name="id" [(ngModel)]="address.id">
-    <div class="form-group">
-        <label for="firstname">Vorname</label>
-        <input type="text" required id="firstname" name="firstname" [(ngModel)]="address.person.firstname">
-    </div>
-    <div class="form-group">
-        <label for="lastname">Nachname</label>
-        <input type="text" required id="lastname" name="lastname"  [(ngModel)]="address.person.lastname">
+<form [formGroup]="addressForm" (ngSubmit)="storeAddress()">
+    <input type="hidden" formControlName="id">
+    <div formGroupName="person">
+        <div class="form-group">
+            <label for="firstname">Vorname</label>
+            <input type="text" id="firstname" formControlName="firstname">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Nachname</label>
+            <input type="text" id="lastname" formControlName="lastname">
+        </div>
     </div>
     <div class="form-group">
         <label for="phone">Telefon</label>
-        <input type="tel" id="phone" name="phone"  [(ngModel)]="address.phone">
+        <input type="tel" id="phone" formControlName="phone">
     </div>
     <div class="actions">
         <input type="submit" class="button primary" value="Speichern"

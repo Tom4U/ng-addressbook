@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Address } from 'src/app/entities/address';
 import { AddressesService } from 'src/app/services/addresses.service';
 
@@ -11,25 +11,35 @@ import { AddressesService } from 'src/app/services/addresses.service';
 export class AddressFormComponent implements OnInit {
   @Input() address = new Address();
 
-  @Output() closing = new EventEmitter();
+  @Output() closing = new EventEmitter<Address>();
+
+  addressForm = new FormGroup({});
 
   constructor(private addressesSvc: AddressesService) { }
 
   ngOnInit(): void {
+    this.addressForm = new FormGroup({
+      id: new FormControl(this.address.id),
+      phone: new FormControl(this.address.phone),
+      person: new FormGroup({
+        firstname: new FormControl(this.address.person.firstname, Validators.required),
+        lastname: new FormControl(this.address.person.lastname, Validators.required)
+      })
+    });
   }
 
-  storeAddress(form: NgForm): void {
-    if (!form.valid) return;
+  storeAddress(): void {
+    if (!this.addressForm?.valid) return;
 
     if (this.address.id > 0)
-      this.addressesSvc.updateAddress(this.address);
+      this.addressesSvc.updateAddress(this.addressForm.value);
     else
-      this.addressesSvc.addAddress(this.address);
+      this.addressesSvc.addAddress(this.addressForm.value);
 
     this.closeForm();
   }
 
   closeForm(): void {
-    this.closing.emit();
+    this.closing.emit(this.addressForm.value);
   }
 }

@@ -8,7 +8,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { AddressListComponent } from './components/address-list/address-list.component';
 import { AddressItemComponent } from './components/address-list/address-item/address-item.component';
 import { AddressFormComponent } from './components/address-list/address-form/address-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

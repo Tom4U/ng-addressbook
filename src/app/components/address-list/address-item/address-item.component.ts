@@ -29,7 +29,9 @@ export class AddressItemComponent implements OnInit {
     this.closing.emit();
   }
 
-  toggleForm(): void {
+  toggleForm(address?: Address): void {
     this.showForm = !this.showForm;
+
+    if (address) this.address = this.addressesSvc.getAddresses().find(next => next.id === address.id) || new Address();
   }
 }

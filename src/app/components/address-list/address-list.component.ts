@@ -32,6 +32,7 @@ export class AddressListComponent implements OnInit {
 
   closingDetails(): void {
     this.selectedAddress = undefined;
+    this.updateAddresses();
   }
 
   addressDeleted(): void {
