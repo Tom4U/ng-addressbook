@@ -1,6 +1,9 @@
-<ul class="list" *ngIf="!selectedAddress">
+<button class="button primary" title="Adresse hinzufügen" (click)="toggleForm()">&plus;</button>
+<ul class="list" *ngIf="!selectedAddress && !showForm">
     <li *ngFor="let address of addresses" (click)="showDetails(address)">
         {{address.person.firstname}} {{address.person.lastname}}
     </li>
+    <li class="no-items" *ngIf="addresses.length === 0">Keine Adressen vorhanden</li>
 </ul>
-<app-address-item *ngIf="selectedAddress" [address]="selectedAddress" (closing)="closingDetails()"></app-address-item>
+<app-address-form *ngIf="showForm" (closing)="toggleForm()"></app-address-form>
+<app-address-item *ngIf="selectedAddress" [address]="selectedAddress" (closing)="closingDetails()" (deleted)="addressDeleted()"></app-address-item>

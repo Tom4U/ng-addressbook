@@ -28,3 +28,19 @@ body {
 .button:hover {
     border: 1px inset black;
 }
+
+.button.warn {
+    background-color: crimson;
+}
+
+.button.primary {
+    background-color: darkslategray;
+    color: whitesmoke;
+}
+
+.button[disabled] {
+    cursor: not-allowed;
+    background-color: #666;
+    color: #aaa;
+    border: none;
+}

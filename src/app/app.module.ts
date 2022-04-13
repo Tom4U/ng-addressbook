@@ -7,6 +7,8 @@ import { ContentComponent } from './layout/content/content.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AddressListComponent } from './components/address-list/address-list.component';
 import { AddressItemComponent } from './components/address-list/address-item/address-item.component';
+import { AddressFormComponent } from './components/address-list/address-form/address-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,10 +17,12 @@ import { AddressItemComponent } from './components/address-list/address-item/add
     ContentComponent,
     FooterComponent,
     AddressListComponent,
-    AddressItemComponent
+    AddressItemComponent,
+    AddressFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

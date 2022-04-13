@@ -11,9 +11,10 @@ export class AddressListComponent implements OnInit {
   addresses: Address[] = [];
 
   selectedAddress?: Address;
+  showForm = false;
 
-  constructor(addressesSvc: AddressesService) {
-    this.addresses = addressesSvc.getAddresses();
+  constructor(private addressesSvc: AddressesService) {
+    this.updateAddresses();
   }
 
   ngOnInit(): void {
@@ -23,7 +24,22 @@ export class AddressListComponent implements OnInit {
     this.selectedAddress = address;
   }
 
+  toggleForm(): void {
+    this.showForm = !this.showForm;
+    
+    if (!this.showForm) this.updateAddresses();
+  }
+
   closingDetails(): void {
     this.selectedAddress = undefined;
+  }
+
+  addressDeleted(): void {
+    this.closingDetails();
+    this.updateAddresses()
+  }
+
+  private updateAddresses(): void {
+    this.addresses = this.addressesSvc.getAddresses();
   }
 }

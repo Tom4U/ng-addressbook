@@ -1,13 +1,20 @@
-<section class="details">
-    <p class="row">
-        <span>Name:</span>
-        <span>{{address?.person}}</span>
-    </p>
-    <p class="row">
-        <span>Telefon:</span>
-        <span>{{address?.phone}}</span>
-    </p>
-</section>
-<section class="actions">
-    <button class="button" (click)="close()">Schließen</button>
-</section>
+<ng-container *ngIf="!showForm">
+    <section class="details">
+        <p class="row">
+            <span>Name:</span>
+            <span>{{address?.person}}</span>
+        </p>
+        <p class="row">
+            <span>Telefon:</span>
+            <span>{{address?.phone}}</span>
+        </p>
+    </section>
+    <section class="actions">
+        <button class="button primary" (click)="toggleForm()">&#9998; Bearbeiten</button>
+        <button class="button warn" (click)="delete()">&#10006; Löschen</button>
+        <button class="button" (click)="close()">Schließen</button>
+    </section>
+</ng-container>
+<ng-container *ngIf="showForm">
+    <app-address-form [address]="address" (closing)="toggleForm()"></app-address-form>
+</ng-container>

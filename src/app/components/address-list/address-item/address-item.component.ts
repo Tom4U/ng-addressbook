@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Address } from 'src/app/entities/address';
+import { AddressesService } from 'src/app/services/addresses.service';
 
 @Component({
   selector: 'app-address-item',
@@ -7,17 +8,28 @@ import { Address } from 'src/app/entities/address';
   styleUrls: ['./address-item.component.css']
 })
 export class AddressItemComponent implements OnInit {
-  @Input() address?: Address;
+  @Input() address = new Address();
+
+  showForm = false;
 
   @Output() closing = new EventEmitter();
+  @Output() deleted = new EventEmitter();
 
-  constructor() { }
+  constructor(private addressesSvc: AddressesService) { }
 
   ngOnInit(): void {
   }
 
-  close() {
+  delete(): void {
+    this.addressesSvc.delete(this.address);
+    this.deleted.emit();
+  }
+
+  close(): void {
     this.closing.emit();
   }
 
+  toggleForm(): void {
+    this.showForm = !this.showForm;
+  }
 }
