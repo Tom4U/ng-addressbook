@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Address } from 'src/app/entities/address';
 import { AddressesService } from 'src/app/services/addresses.service';
 
@@ -17,8 +18,8 @@ export class AddressFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  storeAddress(form: HTMLFormElement): void {
-    if (!form.checkValidity()) return;
+  storeAddress(form: NgForm): void {
+    if (!form.valid) return;
 
     if (this.address.id > 0)
       this.addressesSvc.updateAddress(this.address);
